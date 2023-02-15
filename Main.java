@@ -299,11 +299,19 @@ class Solution_13 {
 }
 
 
+class Solution_14 {
+    public int[] solution(int[] arr, int divisor) {
+        int[] answer = {};
+        return answer;
+    }
+}
 
 public class Main {
     public static void main(String[] ars) {
-        Solution_15 s = new Solution_15();
+        Solution_14 s = new Solution_14();
 
-        System.out.println(s.solution("1234"));
+        int a[] = {5,9,7,10};
+        int b[] = {2,36,1,3};
+        System.out.println(s.solution(a,5));
     }
 }
