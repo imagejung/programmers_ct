@@ -315,3 +315,5 @@ public class Main {
         System.out.println(s.solution(a,5));
     }
 }
+
+//commit 연습
