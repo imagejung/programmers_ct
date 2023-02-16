@@ -1,4 +1,7 @@
+import java.sql.SQLOutput;
+import java.util.Arrays;
 import java.util.Scanner;
+
 
 //직사각형 별찍기
 class Programmers_0 {
@@ -298,22 +301,248 @@ class Solution_13 {
     }
 }
 
-
+//나누어 떨어지는 숫자 배열
 class Solution_14 {
     public int[] solution(int[] arr, int divisor) {
-        int[] answer = {};
+
+        int cnt = 0;
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % divisor == 0) {
+                cnt++;
+            }
+        }
+
+        if (cnt == 0) {
+            int[] answer = {-1};
+            return answer;
+        }
+
+
+        int[] answer = new int[cnt];
+        cnt = 0;
+
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] % divisor == 0) {
+                answer[cnt] = arr[i];
+                cnt++;
+            }
+        }
+        Arrays.sort(answer);
+
         return answer;
     }
 }
 
-public class Main {
-    public static void main(String[] ars) {
-        Solution_14 s = new Solution_14();
 
-        int a[] = {5,9,7,10};
-        int b[] = {2,36,1,3};
-        System.out.println(s.solution(a,5));
+//내적
+class Solution_15 {
+    public int solution(int[] a, int[] b) {
+        int answer = 0;
+
+        for (int i=0; i<a.length; i++){
+            answer += a[i]*b[i];
+        }
+
+        return answer;
     }
 }
 
-//commit 연습
+
+
+//문자열 내 p와 y의 개수
+class Solution_16 {
+    boolean solution(String s) {
+        boolean answer = true;
+
+        int p = 0;
+        int y = 0;
+
+        for (int i=0; i<s.length(); i++){
+          if (s.charAt(i) == 'p' || s.charAt(i) == 'P'){
+              p++;
+            }
+          else if (s.charAt(i) == 'y' || s.charAt(i) == 'Y'){
+              y++;
+          }
+        }
+
+        if(p!=y){
+            answer = false;
+        }
+
+        return answer;
+    }
+}
+
+
+
+//문자열 다루기 기본
+class Solution_17 {
+    public boolean solution(String s) {
+        boolean answer = true;
+
+        if (s.length() == 4 || s.length() == 6){
+            for (int i=0; i<s.length(); i++) {
+                if (s.charAt(i) <= '0' || s.charAt(i) >= '9') {
+                    answer = false;
+                }
+            }
+        }
+        else
+            answer = false;
+
+        return answer;
+    }
+}
+
+
+
+// 서울에서 김서방 찾기
+class Solution_18 {
+    public String solution(String[] seoul) {
+        String answer = "";
+
+        for (int i=0; i<seoul.length; i++) {
+            if (seoul[i].equals("Kim")) {
+                answer = "김서방은 " + i + "에 있다";
+                break;
+            }
+        }
+        return answer;
+    }
+}
+
+
+
+// 수박수박수박수박수박수?
+class Solution_19 {
+    public String solution(int n) {
+        String answer = "";
+        for (int i=0; i<n; i++){
+            if (i%2 == 0){
+                answer += "수";
+            }
+            else
+                answer += "박";
+        }
+        return answer;
+    }
+}
+
+
+//완주하지 못한 선수
+class Solution_20 {
+    public String solution(String[] participant, String[] completion) {
+        String answer = "";
+        int cnt = 0;
+
+        Arrays.sort(participant);
+        Arrays.sort(completion);
+
+        for (int i=0; i<completion.length; i++){
+            if (participant[i].equals(completion[i]) == false){
+                answer = participant[i];
+                cnt ++;
+                break;
+            }
+        }
+
+        if (cnt == 0){
+            answer = participant[participant.length-1];
+        }
+
+        return answer;
+    }
+}
+
+
+//이상한 문자 만들기
+class Solution_21 {
+    public String solution(String s) {
+        String answer = "";
+        int cnt = 0;
+
+        s = s.toLowerCase();
+        System.out.println(s);
+        for (int i=0; i<s.length(); i++){
+            if (s.charAt(i) == ' ' ){
+                cnt = 0;
+                answer += " ";
+            }
+            else {
+                if (cnt % 2 == 0){
+                    answer += (char)(s.charAt(i) - 32);
+                }
+                else {
+                    answer += s.charAt(i);
+                }
+                cnt++;
+            }
+        }
+        return answer;
+    }
+}
+
+
+
+//자릴수 더하기
+class Solution_22 {
+    public int solution(int n) {
+        int answer = 0;
+
+        while (n > 0){
+            answer += n % 10;
+            n /= 10;
+        }
+        return answer;
+    }
+}
+
+//자연수 뒤집기
+class Solution_23 {
+    public int[] solution(long n) {
+
+        String tmp = "";
+        for (int i=0; n>0 ; i++){
+            tmp += n%10;
+            n /= 10;
+        }
+
+        int [] answer = new int[tmp.length()];
+
+        for (int j=0; j<tmp.length(); j++){
+            answer[j] = tmp.charAt(j)-'0';
+        }
+
+        return answer;
+    }
+}
+
+
+
+//정수 내림차순으로 배치하기
+class Solution_24 {
+    public long solution(long n) {
+        long answer = 0;
+        return answer;
+    }
+}
+
+
+
+
+public class Main {
+    public static void main(String[] ars) {
+        Solution_24 s = new Solution_24();
+
+        //int a[] = {1,2,3,4};
+        //int b[] = {-3,-1,0,2};
+
+        //String ss = "try hello world abcd DDDkdkdkdk ";
+        //String[] completion = {"eden", "kiki"};
+
+        //System.out.println(s.solution(12345));
+        System.out.println(Arrays.toString(s.solution(12345)));
+
+    }
+}
