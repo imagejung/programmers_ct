@@ -1,6 +1,7 @@
 import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.*;
 
 
 //직사각형 별찍기
@@ -524,6 +525,69 @@ class Solution_23 {
 class Solution_24 {
     public long solution(long n) {
         long answer = 0;
+
+        String tmp = ""+n;
+        char[] answer_arr = tmp.toCharArray();
+
+        Arrays.sort(answer_arr);
+
+
+
+        for (int i=0; i<answer_arr.length; i++){
+            answer += answer_arr[answer_arr.length-1-i]-'0';
+            answer *= 10;
+        }
+        answer /= 10;
+
+        return answer;
+    }
+}
+
+
+class Solution_25 {
+    public long solution(long n) {
+        long answer = 0;
+
+        long sqrt_ans = (long)Math.sqrt(n);
+        if (sqrt_ans * sqrt_ans == n){
+            answer = (sqrt_ans+1) * (sqrt_ans+1);
+        }
+        else
+            answer = -1;
+
+        return answer;
+    }
+}
+
+
+//제일 작은수 제거하기
+class Solution_26 {
+    public int[] solution(int[] arr) {
+
+        int[] answer;
+        int min = arr[0];
+        for (int i=0; i<arr.length; i++){
+            if (arr[i]<min){
+                min = arr[i];
+            }
+        }
+
+        if (arr.length == 1){
+            answer = new int[1];
+            answer[0] = -1;
+        }
+        else{
+            answer = new int[arr.length-1];
+        }
+
+        for (int j=0, k=0; k<arr.length; j++, k++){
+            if (arr[k] == min){
+                j--;
+            }
+            else{
+                answer[j] = arr[k];
+            }
+        }
         return answer;
     }
 }
@@ -533,16 +597,61 @@ class Solution_24 {
 
 public class Main {
     public static void main(String[] ars) {
-        Solution_24 s = new Solution_24();
+        Solution_26 s = new Solution_26();
 
-        //int a[] = {1,2,3,4};
-        //int b[] = {-3,-1,0,2};
+        int a[] = {4,3,2,1};
+        int b[] = {10};
 
         //String ss = "try hello world abcd DDDkdkdkdk ";
         //String[] completion = {"eden", "kiki"};
 
-        //System.out.println(s.solution(12345));
-        System.out.println(Arrays.toString(s.solution(12345)));
+        //System.out.println(s.solution(10));
+        System.out.println(Arrays.toString(s.solution(a)));
 
     }
 }
+
+//콜라츠 추측
+class Solution_27 {
+    public int solution(int num) {
+
+        long tmp = num;
+        int answer = -1;
+            int i;
+            for (i = 0; i < 500; i++) {
+                if (tmp == 1) {
+                    answer = i;
+                    break;
+                } else if (tmp % 2 == 0) {
+                    tmp /= 2;
+                } else
+                    tmp = tmp * 3 + 1;
+            }
+        return answer;
+    }
+}
+
+
+class Solution_28 {
+    public boolean solution(int x) {
+        boolean answer = true;
+
+        String x_str = Integer.toString(x);
+        int x_sum = 0;
+
+        for (int i=0; i<x_str.length(); i++){
+            x_sum += x_str.charAt(i)-'0';
+        }
+
+        if (x % x_sum != 0){
+            answer = false;
+        }
+
+        return answer;
+    }
+}
+
+
+
+
+
